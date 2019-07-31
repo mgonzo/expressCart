@@ -175,12 +175,6 @@ handlebars = handlebars.create({
             }
             return'';
         },
-        isNull: (value, options) => {
-            if(typeof value === 'undefined' || value === ''){
-                return options.fn(this);
-            }
-            return options.inverse(this);
-        },
         toLower: (value) => {
             if(value){
                 return value.toLowerCase();
@@ -190,7 +184,13 @@ handlebars = handlebars.create({
         formatDate: (date, format) => {
             return moment(date).format(format);
         },
-        ifCond: (v1, operator, v2, options) => {
+        isNull: function isNull(value, options) {
+            if(typeof value === 'undefined' || value === ''){
+                return options.fn(this);
+            }
+            return options.inverse(this);
+        },
+        ifCond: function ifCond(v1, operator, v2, options) {
             switch(operator){
             case'==':
                 return(v1 === v2) ? options.fn(this) : options.inverse(this);
@@ -214,7 +214,7 @@ handlebars = handlebars.create({
                 return options.inverse(this);
             }
         },
-        isAnAdmin: (value, options) => {
+        isAnAdmin: function isAnAdmin(value, options) {
             if(value === 'true' || value === true){
                 return options.fn(this);
             }
