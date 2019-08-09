@@ -567,7 +567,7 @@ $(document).ready(function (){
         $.ajax({
             method: 'POST',
             url: '/admin/product/setasmainimage',
-            data: { product_id: $('#frmProductId').val(), productImage: $(this).attr('data-id') }
+            data: { product_id: $('#productId').val(), productImage: $(this).attr('data-id') }
         })
 		.done(function(msg){
             showNotification(msg.message, 'success', true);
