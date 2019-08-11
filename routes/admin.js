@@ -208,7 +208,7 @@ router.post('/admin/settings/option/remove', restrict, checkAccess, (req, res) =
             console.info(err.stack);
         }
         if(product && product.productOptions){
-            const optJson = JSON.parse(product.productOptions);
+            const optJson = Object.create(product.productOptions);
             delete optJson[req.body.optName];
 
             db.products.update({ _id: common.getId(req.body.productId) }, { $set: { productOptions: JSON.stringify(optJson) } }, (err, numReplaced) => {

@@ -226,7 +226,7 @@ $(document).ready(function (){
         $.ajax({
             method: 'POST',
             url: '/admin/settings/option/remove/',
-            data: { productId: $('#frmProductId').val(), optName: name }
+            data: { productId: $('#productId').val(), optName: name }
         })
         .done(function(msg){
             showNotification(msg.message, 'success', true);
@@ -581,7 +581,7 @@ $(document).ready(function (){
         $.ajax({
             method: 'POST',
             url: '/admin/product/deleteimage',
-            data: { product_id: $('#frmProductId').val(), productImage: $(this).attr('data-id') }
+            data: { product_id: $('#productId').val(), productImage: $(this).attr('data-id') }
         })
 		.done(function(msg){
             showNotification(msg.message, 'success', true);
@@ -597,7 +597,7 @@ $(document).ready(function (){
             $.ajax({
                 method: 'POST',
                 url: '/admin/api/validate_permalink',
-                data: { 'permalink': $('#productPermalink').val(), 'docId': $('#frmProductId').val() }
+                data: { 'permalink': $('#productPermalink').val(), 'docId': $('#productId').val() }
             })
             .done(function(msg){
                 console.log('msg', msg);
